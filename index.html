@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <title>Gleeva Capture</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>  <div class="container">
+    <div class="header">
+      <h1>Gleeva Capture</h1>
+      <button id="headerCloseBtn" class="btn-close-header" title="Close Window">✕</button>
+    </div>    <!-- Info Banner -->
+    <div class="info-banner">
+      <p>💡 <strong>Quick Controls:</strong> <strong>Ctrl+Shift+F</strong> for full screen, <strong>Ctrl+Shift+A</strong> for area capture. Clear screenshots with "Clear Screenshot" button or <strong>Delete</strong> key. Close with <strong>Escape</strong>!</p>
+    </div>
+      <!-- Controls Section -->
+    <div class="controls">
+      <div class="control-group">
+        <h2>Screen Capture</h2>
+        <button id="captureFullScreen" class="btn btn-capture">Capture Full Screen</button>
+        <button id="captureArea" class="btn btn-primary">Select Area to Capture</button>
+      </div>
+    </div>
+    
+    <!-- Preview Section -->
+    <div class="preview-section">
+      <!-- Screen Selection Preview -->
+      <div class="preview-container">
+        <h3>Screen Preview</h3>
+        <canvas id="screenPreview"></canvas>
+        <div id="screenPlaceholder" class="placeholder">
+          <p>Click "Capture Full Screen" or "Select Area" to begin</p>
+        </div>
+      </div>
+      
+      <!-- Captured Image Preview -->
+      <div class="preview-container">
+        <h3>Captured Screenshot</h3>
+        <canvas id="previewCanvas"></canvas>
+        <div id="previewPlaceholder" class="placeholder">
+          <p>No screenshot captured yet</p>
+        </div>        <!-- Action Buttons -->
+        <div id="imageActions" class="image-actions" style="display: none;">
+          <button id="saveImage" class="btn btn-success">Save to Folder</button>
+          <button id="copyImage" class="btn btn-info">Copy to Clipboard</button>
+          <button id="clearScreenshot" class="btn btn-warning">Clear Screenshot</button>
+          <button id="minimizeApp" class="btn btn-secondary">Minimize to Tray</button>
+          <button id="closeApp" class="btn btn-danger">Close Window</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Area Selection Overlay -->
+    <div id="selectionOverlay" class="selection-overlay" style="display: none;">
+      <div class="selection-instructions">
+        <p>Click and drag to select the area you want to capture</p>
+        <button id="cancelSelection" class="btn btn-secondary">Cancel</button>
+      </div>
+      <canvas id="selectionCanvas"></canvas>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+  </div>
+  
+  <script src="renderer.js"></script>
+</body>
+</html>
